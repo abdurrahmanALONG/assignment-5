@@ -6,21 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap- link -->
     <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="style.csc">
+    <!-- css-file-link -->
+    <link rel="stylesheet" href="style.css">
     <title>Assignment-5</title>
-    <style>
-        #percentage-input {
-           width: 100px;
-         }
-         #saving-button{
-            width: 80px; 
-         }
-    </style>
 </head>
 <body>
+    <!----------- header part start ---------------->
 <header>
     <h1 class="text-center text-info my-4">Self Finance</h1>
 </header>
+     <!----------- header part end ---------------->
+
+
+      <!----------- Main part start ---------------->
 <main>
     <section class="container mb-5">
       <div class="row flex-lg-row  flex-column "> 
@@ -55,123 +53,17 @@
            </div>
       </div>
     </section>
+    <div class="text-center my-5">
+        <p id="notify-notanumber" class="notify w-50">❌ There is not a number, Please try again.</p>
+        <p id="notify-belozero" class="notify w-50">❌ you can't put lessthen 0, Please try again.</p>
+        <p id="notify-zeroIncom" class="notify w-50">❌ your income can't be lessthen 0, Please try again.</p>
+        <p id="notify-incomeNotANumber" class="notify w-50">❌ your income is not a number, Please try again.</p>
+        <p id="notify-notenoughmoney" class="notify w-50">❌ There is not a enough money for saving.</p>
+        <p id="notify-exsecexpances" class="notify w-50">❌ your Expenses is higherthen your income,so becarefull.</p>
+    </div>
 </main>
+ <!---------------------------- Main part end-------------------------->i
 
-
-
-
-
-
-<script>
- // ...............This is for the Function........................  
- 
-function getInputValue(inputId) {
-    const inputField = document.getElementById(inputId);
-    const inputAmountText = inputField.value;
-    const amountValue = parseFloat(inputAmountText);
-    // clear input field
-    inputField.value = '';
-    return amountValue;
-} 
-  function incomeAmount(ammount) {
-    const newIncomeAmountInput =document.getElementById(ammount);
-    // const newIncomeAmountInput =document.getElementById('incomeCost-input');
-    const newIncomeAmountText = newIncomeAmountInput.value;
-    const newIncomeAmount = parseFloat(newIncomeAmountText);
-    return newIncomeAmount;
-  } 
-
-
-
-
-
-// ...............This is for the First button........................
-
-    document.getElementById('calculat-button').addEventListener('click',function(){
-        // this is for the income amount input
-    // const newIncomeAmountInput =document.getElementById('incomeCost-input');
-    // const newIncomeAmountText = newIncomeAmountInput.value;
-    const newIncomeAmount = incomeAmount('incomeCost-input');
-    // const newIncomeAmount  =getInputValue('incomeCost-input');
-    // console.log(newIncomeAmount);
-    
- 
-    // this is for the food cost
-    const newfoodCostAmount = getInputValue('foodCost-input');
-
-
-    // this is for the rent cost
-    const newRentCostAmount =getInputValue('rentCost-input');
-
-  
-    // this is for the clothes cost
-    const newClothesCostAmount = getInputValue('clothesCost-input');
-
-
-    // this is the Total Expenses
-     const totalExpenses =document.getElementById('total-expenses');
-     const newTotalCost = newfoodCostAmount + newRentCostAmount + newClothesCostAmount;
-     totalExpenses.innerText = newTotalCost;
-    
-    //  this is for the left blance
-    const leftBalance = document.getElementById('balance-left');
-    const newTotalBalance = newIncomeAmount - newTotalCost;
-    leftBalance.innerText =  newTotalBalance; 
-
-})
-
-
-
-// ...............This is for the Secound button........................
-
-document.getElementById('saving-button').addEventListener('click', function(){
-    // this is for the income amount
-    const newIncomeAmount = incomeAmount('incomeCost-input');
-
-    // this is for the percentage input
-    const newParcentage =  getInputValue('percentage-input');
-    console.log(newParcentage);
-
- // this is for the income amount
-//   const inputIncomeAmount =document.getElementById('incomeCost-input');
-//   const inputIncomeAmountText= inputIncomeAmount.innerText;
-//   console.log(inputIncomeAmountText);
-    
-    
-    //  this is for the update left blance
-    const leftUpdateBalances = document.getElementById('balance-left');
-    const newUpdateBalance = leftUpdateBalances.innerText;
- 
-     // this is for the Savings Amount
-     const savingAmount = document.getElementById('saving-amount');
-    const leftBalancepercentageBy100 = newIncomeAmount / 100;
-    const newSavingAmount =leftBalancepercentageBy100 * newParcentage;
-    savingAmount.innerText = newSavingAmount;
-   
-
-
-    // this is for the Remaining Balance
-    const remainingBalanceAmount = document.getElementById('remaining-blance');
-    const newRemainingBalanceAmount =  newUpdateBalance - newSavingAmount;
-    remainingBalanceAmount.innerText = newRemainingBalanceAmount;
-   
-
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
 
 
     <!-- bootstrap-bundle-min-js-link -->

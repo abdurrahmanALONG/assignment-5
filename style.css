@@ -1,0 +1,15 @@
+#percentage-input {
+    width: 100px;
+}
+  #saving-button{
+     width: 80px; 
+}
+.notify {
+    color: #fff;
+    margin: 0 auto;
+    background: #222436;
+    margin-top: 20px;
+    border-radius: 15px;
+    padding: 5px 20px;
+    display: none;
+}
