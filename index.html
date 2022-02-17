@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap- link -->
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.csc">
+    <title>Assignment-5</title>
+    <style>
+        #percentage-input {
+           width: 100px;
+         }
+         #saving-button{
+            width: 80px; 
+         }
+    </style>
+</head>
+<body>
+<header>
+    <h1 class="text-center text-info my-4">Self Finance</h1>
+</header>
+<main>
+    <section class="container mb-5">
+      <div class="row flex-lg-row  flex-column "> 
+           <div class="col-6  px-5  ">
+              <img  class=" h-lg-100 h-100 w-100" src="images/finance.jpg" alt="">
+           </div>
+           <div class="col-6 text-center px-5 ">
+              <h4 class="my-2">Income</h4>
+              <h5>Income: <span><input id="incomeCost-input" class="bg-secondary rounded text-white my-1 border-0" type="text"></span></h5>
+              <h4 class="my-2">Expenses</h4>
+              <h5>Food: <span><input  id="foodCost-input" class="bg-secondary rounded text-white my-1 border-0" type="text"></span></h5>
+              <h5>Rent: <span><input  id="rentCost-input" class="bg-secondary rounded text-white my-1 border-0" type="text"></span></h5>
+              <h5>Clothes: <span><input  id="clothesCost-input" class="bg-secondary rounded text-white my-1 border-0" type="text"></span></h5>
+              <button id="calculat-button" class="my-2 bg-primary text-white rounded border-0"><h4>Calculate</h4></button>
+              <h4 class="my-2">Total Expenses: <span id="total-expenses"></span></h4>
+              <h4 class="my-2">Balance: <span id="balance-left"></span></h4>
+            <div >
+                <div class="row">
+                    <div class="col-5">
+                        <h5>Save: <span><input  id="percentage-input" class="bg-secondary widthSave rounded text-white my-1 border-0" type="text"></span></h5>
+                    </div>
+                    <div class="col-2">
+                       <h5>%</h5>
+                    </div>
+                    <div class="col-5">
+                        <button id="saving-button" class="my-2 bg-primary text-white rounded border-0">Save</button>
+                    </div>
+                </div>
+            </div>
+              <h4 class="my-2">Saving Amount: <span id="saving-amount"></span> </h4>
+              <h4 class="my-2">Remaining Balance:  <span id="remaining-blance"></span> </h4>
+           </div>
+      </div>
+    </section>
+</main>
+
+
+
+
+
+
+<script>
+ // ...............This is for the Function........................  
+ 
+function getInputValue(inputId) {
+    const inputField = document.getElementById(inputId);
+    const inputAmountText = inputField.value;
+    const amountValue = parseFloat(inputAmountText);
+    // clear input field
+    inputField.value = '';
+    return amountValue;
+} 
+  function incomeAmount(ammount) {
+    const newIncomeAmountInput =document.getElementById(ammount);
+    // const newIncomeAmountInput =document.getElementById('incomeCost-input');
+    const newIncomeAmountText = newIncomeAmountInput.value;
+    const newIncomeAmount = parseFloat(newIncomeAmountText);
+    return newIncomeAmount;
+  } 
+
+
+
+
+
+// ...............This is for the First button........................
+
+    document.getElementById('calculat-button').addEventListener('click',function(){
+        // this is for the income amount input
+    // const newIncomeAmountInput =document.getElementById('incomeCost-input');
+    // const newIncomeAmountText = newIncomeAmountInput.value;
+    const newIncomeAmount = incomeAmount('incomeCost-input');
+    // const newIncomeAmount  =getInputValue('incomeCost-input');
+    // console.log(newIncomeAmount);
+    
+ 
+    // this is for the food cost
+    const newfoodCostAmount = getInputValue('foodCost-input');
+
+
+    // this is for the rent cost
+    const newRentCostAmount =getInputValue('rentCost-input');
+
+  
+    // this is for the clothes cost
+    const newClothesCostAmount = getInputValue('clothesCost-input');
+
+
+    // this is the Total Expenses
+     const totalExpenses =document.getElementById('total-expenses');
+     const newTotalCost = newfoodCostAmount + newRentCostAmount + newClothesCostAmount;
+     totalExpenses.innerText = newTotalCost;
+    
+    //  this is for the left blance
+    const leftBalance = document.getElementById('balance-left');
+    const newTotalBalance = newIncomeAmount - newTotalCost;
+    leftBalance.innerText =  newTotalBalance; 
+
+})
+
+
+
+// ...............This is for the Secound button........................
+
+document.getElementById('saving-button').addEventListener('click', function(){
+    // this is for the income amount
+    const newIncomeAmount = incomeAmount('incomeCost-input');
+
+    // this is for the percentage input
+    const newParcentage =  getInputValue('percentage-input');
+    console.log(newParcentage);
+
+ // this is for the income amount
+//   const inputIncomeAmount =document.getElementById('incomeCost-input');
+//   const inputIncomeAmountText= inputIncomeAmount.innerText;
+//   console.log(inputIncomeAmountText);
+    
+    
+    //  this is for the update left blance
+    const leftUpdateBalances = document.getElementById('balance-left');
+    const newUpdateBalance = leftUpdateBalances.innerText;
+ 
+     // this is for the Savings Amount
+     const savingAmount = document.getElementById('saving-amount');
+    const leftBalancepercentageBy100 = newIncomeAmount / 100;
+    const newSavingAmount =leftBalancepercentageBy100 * newParcentage;
+    savingAmount.innerText = newSavingAmount;
+   
+
+
+    // this is for the Remaining Balance
+    const remainingBalanceAmount = document.getElementById('remaining-blance');
+    const newRemainingBalanceAmount =  newUpdateBalance - newSavingAmount;
+    remainingBalanceAmount.innerText = newRemainingBalanceAmount;
+   
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+    <!-- bootstrap-bundle-min-js-link -->
+     <script src="bootstrap.bundle.min.js"></script>
+       <!-- javascript.js-link -->
+    <script src="js/self-finance.js"></script>
+</body>
+</html>
