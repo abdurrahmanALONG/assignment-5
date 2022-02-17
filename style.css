@@ -1,9 +1,12 @@
+/* save input fild */
 #percentage-input {
     width: 100px;
 }
+/* save button */
   #saving-button{
      width: 80px; 
 }
+/* for notify error case */
 .notify {
     color: #fff;
     margin: 0 auto;
